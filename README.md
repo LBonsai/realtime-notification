@@ -1,4 +1,4 @@
-### Getting Started
+## Getting Started
 
 ### Prerequisites
 * [Laragon](https://laragon.org/download/) (Development Environment)
