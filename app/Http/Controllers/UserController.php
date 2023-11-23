@@ -51,7 +51,7 @@ class UserController extends Controller
     }
 
     /**
-     * show
+     * notifications
      * @param int $userId
      * @return UserResource|JsonResponse
      */
@@ -67,6 +67,7 @@ class UserController extends Controller
     }
 
     /**
+     * updateNotificationSettings
      * @param NotificationSettingsEditRequest $request
      * @return UserResource
      */

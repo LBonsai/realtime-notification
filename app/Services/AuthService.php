@@ -22,7 +22,7 @@ class AuthService
             return [
                 'code' => 401,
                 'data' => [
-                    'error' => 'Invalid credentials'
+                    'message' => 'Invalid credentials'
                 ]
             ];
         }
@@ -44,14 +44,21 @@ class AuthService
     /**
      * logout
      * @param object $request
-     * @return void
+     * @return array
      */
-    public function logout(object $request): void
+    public function logout(object $request): array
     {
         $user = $request->user();
 
         $user->currentAccessToken()->delete();
 
         broadcast(new OfflineUserEvent($user))->toOthers();
+
+        return [
+            'code' => 200,
+            'data' => [
+                'message' => 'Logged out successfully'
+            ]
+        ];
     }
 }

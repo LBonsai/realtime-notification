@@ -34,22 +34,6 @@ class NotificationController extends Controller
     }
 
     /**
-     * show
-     * @param int $id
-     * @return NotificationResource|JsonResponse
-     */
-    public function show(int $id): NotificationResource|JsonResponse
-    {
-        try {
-            $response = $this->notificationService->show($id);
-            return new NotificationResource($response);
-        } catch (ModelNotFoundException $e) {
-            Log::error($e->getMessage() . '/n' . $e->getTraceAsString());
-            return response()->json(['message' => 'User data not found.'], 404);
-        }
-    }
-
-    /**
      * destroy
      * @param int $id
      * @return JsonResponse
