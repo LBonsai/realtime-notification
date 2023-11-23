@@ -59,6 +59,7 @@
 
 
 ### Environment Variable
+```sh
 APP_NAME="Realtime Notification System"
 APP_ENV=local
 APP_KEY=base64:05KQpbXnye+lvtaseX3FtDzLrwp50SAgAa7eWsAPBGo=
@@ -118,6 +119,7 @@ VITE_PUSHER_HOST="${PUSHER_HOST}"
 VITE_PUSHER_PORT="${PUSHER_PORT}"
 VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
 VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+```
 
 
 
