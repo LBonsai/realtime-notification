@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Events\OfflineUserEvent;
+use App\Events\OnlineUserEvent;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +30,8 @@ class AuthService
         $user = User::where('email', $userCredentials['email'])->first();
         $token = $user->createToken('auth-token')->plainTextToken;
 
+        broadcast(new OnlineUserEvent($user))->toOthers();
+
         return [
             'code' => 200,
             'data' => [
@@ -35,5 +39,19 @@ class AuthService
                 'user' => $user
             ]
         ];
+    }
+
+    /**
+     * logout
+     * @param object $request
+     * @return void
+     */
+    public function logout(object $request): void
+    {
+        $user = $request->user();
+
+        $user->currentAccessToken()->delete();
+
+        broadcast(new OfflineUserEvent($user))->toOthers();
     }
 }

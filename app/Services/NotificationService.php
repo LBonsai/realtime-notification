@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\NotificationCreatedEvent;
 use App\Models\Notification;
 use App\Models\User;
 
@@ -20,6 +21,8 @@ class NotificationService
 
         $users = User::all();
         $notification->users()->attach($users);
+
+        broadcast(new NotificationCreatedEvent())->toOthers();
 
         return $notification;
     }

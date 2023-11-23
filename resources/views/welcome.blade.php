@@ -9,6 +9,11 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="module" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+        @vite('resources/js/app.js')
 
         <!-- Styles -->
         <style>
@@ -138,3 +143,24 @@
         </div>
     </body>
 </html>
+
+<script type="module">
+    Echo.channel('online-user')
+        .listen('OnlineUserEvent', function (data) {
+            toastr.success(capitalizedName(data.user.name) + ' is now online.');
+        });
+
+    Echo.channel('offline-user')
+        .listen('OfflineUserEvent', function (data) {
+            toastr.success(capitalizedName(data.user.name) + ' is now offline.');
+        });
+
+    Echo.channel('notification-created')
+        .listen('NotificationCreatedEvent', function () {
+            toastr.success('New notification was created.');
+        });
+
+    function capitalizedName(name) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+</script>
