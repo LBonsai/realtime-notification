@@ -1,4 +1,4 @@
-### Getting Started
+[Realtime Notification API.postman_collection.json](https://github.com/LBonsai/realtime-notifications/files/13451486/Realtime.Notification.API.postman_collection.json)### Getting Started
 
 ### Prerequisites
 * [Laragon](https://laragon.org/download/) (Development Environment)
@@ -51,7 +51,394 @@
 
 1. Download and Install [Postman](https://www.postman.com/downloads/)
 2. Open the application and import this collection of API request that I created for testing the API.
-   [Uploading Realtime Notification API.postman_collection.json…]()
+   [Uploading R{
+	"info": {
+		"_postman_id": "bbe61226-4834-4575-b49f-530bded499a7",
+		"name": "Realtime Notification API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8530651"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "testemail@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://realtime-notification.test/api/login",
+							"protocol": "http",
+							"host": [
+								"realtime-notification",
+								"test"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "110|JnhsiRB2ctnXZcKAgYqOsfpCKvIOursoiuR26Dml7599d0e8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://realtime-notification.test/api/logout",
+							"protocol": "http",
+							"host": [
+								"realtime-notification",
+								"test"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Add User",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "John Ford",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "testemail@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://realtime-notification.test/api/users",
+							"protocol": "http",
+							"host": [
+								"realtime-notification",
+								"test"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Profile",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "107|jQgKv2ricmlG1jaZA1coT2NcY6KegQyfcgQVXGvD5f5920e5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://realtime-notification.test/api/users/90",
+							"protocol": "http",
+							"host": [
+								"realtime-notification",
+								"test"
+							],
+							"path": [
+								"api",
+								"users",
+								"90"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Notification by UserId",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "107|jQgKv2ricmlG1jaZA1coT2NcY6KegQyfcgQVXGvD5f5920e5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://realtime-notification.test/api/users/90/notifications",
+							"protocol": "http",
+							"host": [
+								"realtime-notification",
+								"test"
+							],
+							"path": [
+								"api",
+								"users",
+								"90",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Notification Setting",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "107|jQgKv2ricmlG1jaZA1coT2NcY6KegQyfcgQVXGvD5f5920e5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "is_enable_notification",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://realtime-notification.test/api/users/notification-settings",
+							"protocol": "http",
+							"host": [
+								"realtime-notification",
+								"test"
+							],
+							"path": [
+								"api",
+								"users",
+								"notification-settings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification",
+			"item": [
+				{
+					"name": "Add Notification",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "107|jQgKv2ricmlG1jaZA1coT2NcY6KegQyfcgQVXGvD5f5920e5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "message",
+									"value": "notification1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://realtime-notification.test/api/notifications",
+							"protocol": "http",
+							"host": [
+								"realtime-notification",
+								"test"
+							],
+							"path": [
+								"api",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "107|jQgKv2ricmlG1jaZA1coT2NcY6KegQyfcgQVXGvD5f5920e5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://realtime-notification.test/api/notifications/27",
+							"protocol": "http",
+							"host": [
+								"realtime-notification",
+								"test"
+							],
+							"path": [
+								"api",
+								"notifications",
+								"27"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}ealtime Notification API.postman_collection.json…]()
+
 
 
 
