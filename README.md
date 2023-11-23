@@ -43,7 +43,7 @@
     ```bash
     $ php artisan websocket:serve
     ```
-14. Access the laravel websocket url **/laravel-websockets**. After that, click the connect button.
+14. Access the laravel websocket url **http://{your app}.test/laravel-websockets**. After that, click the connect button.
 
     ![image](https://github.com/LBonsai/realtime-notifications/assets/47714130/870d2bcb-8987-4e43-b40a-458a5b175bbd)
 
@@ -52,6 +52,12 @@
 1. Download and Install [Postman](https://www.postman.com/downloads/)
 2. Open the application and import this collection of API request that I created for testing the API.
    [Realtime Notification API.postman_collection.json](https://github.com/LBonsai/realtime-notifications/files/13451486/Realtime.Notification.API.postman_collection.json)
+3. Just change the API url based on your application URL and also change the values that are predefined.
+4. For testing of realtime notification, just navigate to the **http://{your app}.test** and try to perform some testing of API that has a realtime notification like logout, login and creating of new notification.
+   i.e ![image](https://github.com/LBonsai/realtime-notifications/assets/47714130/9386446b-5359-4908-ade3-9f3f7485c963)
+5. You can also check the **http://{your app}.test/laravel-websockets** while doing some testing for the realtime notification to check for the events that are trigger.
+
+
 
 
 
