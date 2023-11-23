@@ -35,10 +35,26 @@ class UserController extends Controller
 
     /**
      * show
+     * @param int $id
+     * @return UserResource|JsonResponse
+     */
+    public function show(int $id): UserResource|JsonResponse
+    {
+        try {
+            $response = $this->userService->show($id);
+            return new UserResource($response);
+        } catch (ModelNotFoundException $e) {
+            Log::error($e->getMessage() . '/n' . $e->getTraceAsString());
+            return response()->json(['message' => 'User data not found.'], 404);
+        }
+    }
+
+    /**
+     * show
      * @param int $userId
      * @return UserResource|JsonResponse
      */
-    public function show(int $userId): UserResource|JsonResponse
+    public function notifications(int $userId): UserResource|JsonResponse
     {
         try {
             $response = $this->userService->show($userId);

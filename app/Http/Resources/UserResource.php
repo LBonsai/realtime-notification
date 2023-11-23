@@ -14,12 +14,18 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        $data = [
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
             'is_enable_notification' => $this->is_enable_notification,
             'created_at' => $this->created_at
         ];
+
+        if ($request->routeIs('user.notifications')) {
+            $data['notifications'] = NotificationResource::collection($this->notifications);
+        }
+
+        return $data;
     }
 }

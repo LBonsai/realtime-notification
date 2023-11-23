@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::apiResource('user', UserController::class)->only([
+Route::apiResource('users', UserController::class)->only([
     'store', 'show'
 ]);
 
-Route::get('user/{user}', [UserController::class, 'show'])->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('users/{user}', [UserController::class, 'show']);
+    Route::get('users/{user}/notifications', [UserController::class, 'notifications'])->name('user.notifications');
+
+    Route::apiResource('notifications', NotificationController::class)->only([
+        'store', 'show', 'destroy'
+    ]);
+});
