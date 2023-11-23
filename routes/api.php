@@ -26,6 +26,7 @@ Route::apiResource('users', UserController::class)->only([
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('users/{user}', [UserController::class, 'show']);
     Route::get('users/{user}/notifications', [UserController::class, 'notifications'])->name('user.notifications');
+    Route::put('users/notification-settings', [UserController::class, 'updateNotificationSettings']);
 
     Route::apiResource('notifications', NotificationController::class)->only([
         'store', 'show', 'destroy'

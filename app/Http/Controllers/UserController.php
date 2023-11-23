@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NotificationSettingsEditRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Resources\UserResource;
 use App\Services\UserService;
@@ -63,5 +64,15 @@ class UserController extends Controller
             Log::error($e->getMessage() . '/n' . $e->getTraceAsString());
             return response()->json(['message' => 'User data not found.'], 404);
         }
+    }
+
+    /**
+     * @param NotificationSettingsEditRequest $request
+     * @return UserResource
+     */
+    public function updateNotificationSettings(NotificationSettingsEditRequest $request): UserResource
+    {
+        $response = $this->userService->updateNotificationSettings($request->validated());
+        return new UserResource($response);
     }
 }

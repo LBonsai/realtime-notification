@@ -6,6 +6,7 @@ use App\Http\Requests\NotificationCreateRequest;
 use App\Http\Resources\NotificationResource;
 use App\Services\NotificationService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
 class NotificationController extends Controller
@@ -32,7 +33,12 @@ class NotificationController extends Controller
         return new NotificationResource($response);
     }
 
-    public function show(int $id)
+    /**
+     * show
+     * @param int $id
+     * @return NotificationResource|JsonResponse
+     */
+    public function show(int $id): NotificationResource|JsonResponse
     {
         try {
             $response = $this->notificationService->show($id);
@@ -43,8 +49,14 @@ class NotificationController extends Controller
         }
     }
 
-    public function destroy(string $id)
+    /**
+     * destroy
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function destroy(int $id): JsonResponse
     {
-        //
+        $response = $this->notificationService->destroy($id);
+        return response()->json($response['data'], $response['code']);
     }
 }

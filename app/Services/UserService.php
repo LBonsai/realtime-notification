@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Hash;
 
 class UserService
@@ -30,5 +31,21 @@ class UserService
     public function show(int $userId)
     {
         return User::findOrFail($userId);
+    }
+
+    /**
+     * updateNotificationSettings
+     * @param array $params
+     * @return mixed
+     */
+    public function updateNotificationSettings(array $params)
+    {
+        $user = auth()->user();
+
+        $user->update([
+            'is_enable_notification' => (int)$params['is_enable_notification'],
+        ]);
+
+        return $user;
     }
 }
