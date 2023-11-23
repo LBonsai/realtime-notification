@@ -2,22 +2,22 @@
 
 namespace App\Services;
 
-use App\Models\UserModel;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
     /**
      * store
-     * @param array $userData
+     * @param array $params
      * @return mixed
      */
-    public function store(array $userData)
+    public function store(array $params)
     {
-        return UserModel::create([
-            'name' => $userData['name'],
-            'email' => $userData['email'],
-            'password' => Hash::make($userData['password']),
+        return User::create([
+            'name' => $params['name'],
+            'email' => $params['email'],
+            'password' => Hash::make($params['password']),
             'is_enable_notification' => true
         ]);
     }
@@ -29,6 +29,6 @@ class UserService
      */
     public function show(int $userId)
     {
-        return UserModel::findOrFail($userId);
+        return User::findOrFail($userId);
     }
 }
